@@ -2,7 +2,7 @@ import sqlite3
 from os.path import isfile
 
 
-class log_in():
+class user_db():
 
     def __init__(self, db_path: str) -> None:
         self.db_path = db_path
@@ -37,4 +37,7 @@ class log_in():
 
     def check_user(self, user_name, password):
         connection = sqlite3.connect()
-        connection.execute()
+        cursor = connection.cursor()
+        cursor.execute("""
+
+        """)

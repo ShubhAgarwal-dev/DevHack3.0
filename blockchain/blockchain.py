@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+from time import mktime
 from hashlib import sha256
 import json
 
@@ -9,13 +10,15 @@ class Blockchain():
         self.chain = []
         self._genesis = self.create_block(proof=1, previous_hash='0')
 
-    def create_block(self, proof, previous_hash):
+    def create_block(self, proof, previous_hash, data: None):
         block = {
             'index': len(self.chain) + 1,
-            'timestamp': str(datetime.datetime.now()),
+            'timestamp': mktime(datetime.utcnow().timetuple()),
+            'data': data,
             # we have made it string so to work with json format for internet
             'proof': proof,
-            'previous_hash': previous_hash}
+            'previous_hash': previous_hash
+        }
 
         self.chain.append(block)
         return block
