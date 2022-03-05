@@ -1,6 +1,6 @@
-import email
 import sqlite3
 from os.path import isfile
+from xmlrpc.client import boolean
 
 
 class user_db():
@@ -43,6 +43,8 @@ class user_db():
             SELECT "img" FROM "users" WHERE "name" = ? AND "password" = ?
         """, str(user_name), str(password))
         result = cursor.fetchall()
+        if bool(result) is False:
+            return 0
         return result[0][0]
 
     def check_user_img2(self, user_name):
@@ -52,6 +54,8 @@ class user_db():
             SELECT "img" FROM "users" WHERE "name" = ?
         """, str(user_name))
         result = cursor.fetchall()
+        if len(result) == 0:
+            exit
         return result[0][0]
 
 
