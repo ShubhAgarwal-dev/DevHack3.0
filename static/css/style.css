@@ -157,7 +157,7 @@ main{
 }
 
 .dsc{
-    background-color: blue;
+    /* background-color: blue; */
     border-color: transparent;
     border-radius: 1.2rem;
 }
