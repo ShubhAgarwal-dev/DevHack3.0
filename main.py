@@ -7,19 +7,20 @@ app = Flask(__name__)
 def log_in():
     if request.method == "POST":
         user_name = request.form.get("uname")
-        password = request.form.get("pword")
-        return redirect(url_for('jk'))
+        # password = request.form.get("pword")
+        return redirect(url_for('home'))
     return render_template('index.html')
-
-
-@app.route('/test')
-def test():
-    return render_template('extra.html')
 
 
 @app.route('/home')
 def home():
-    return render_template('homepage.html')
+    name = str(request.args['uname']) or 'default'
+    return render_template('homepage.html', name=name)
+
+
+@app.route('/profile/<username>')
+def profile():
+    return render_template('profilepage.html')
 
 
 @app.route('/jk')
