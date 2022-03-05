@@ -16,20 +16,26 @@ class EncryptImage():
 
     def encrypt(self, destination: str = r'encrypted/'):
         # try:
-            with open(self.image_path, mode='rb') as file:
-                img = bytearray(file)
-                for i, values in enumerate(img):
-                    img[i] = values ^ self.key
+        with open(self.image_path, mode='rb') as file:
+            img = bytearray(file.read())
+            for i, values in enumerate(img):
+                img[i] = values ^ self.key
 
-                with open(destination, mode='wb') as file:
-                    destination = destination+self.image_name
-                    file.write(destination)
+            destination = os.path.join(destination, self.image_name)
+            cwd = os.getcwd()
+            full_dest = os.path.join(cwd, destination)
+
+            if not os.path.isfile(full_dest):
+                os.mkdir(full_dest)
+
+            with open(full_dest, mode='wb') as file:
+                file.write(img)
 
         # except Exception:
         #     print('error caught', Exception.__name__)
 
     @staticmethod
-    def decrypt(image_path):
+    def decrypt(image_path, key):
         pass
 
 

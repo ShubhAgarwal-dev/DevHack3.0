@@ -1,10 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def log_in():
+    if request.method == "POST":
+        user_name = request.form.get("uname")
+        password = request.form.get("pword")
+        return user_name + password
     return render_template('index.html')
 
 
@@ -15,8 +19,8 @@ def test():
 
 @app.route('/home')
 def home():
-    pass
+    return render_template('homepage.html')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
