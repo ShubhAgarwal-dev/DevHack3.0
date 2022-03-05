@@ -4,7 +4,7 @@ from os.path import isfile
 
 class user_db():
 
-    def __init__(self, db_path: str) -> None:
+    def __init__(self, db_path: str = r'database/user.db') -> None:
         self.db_path = db_path
         if not isfile(path=db_path):
             self._make_database(self.db_path)
