@@ -1,13 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from pyweb.first import user_db
-import blockchain.blockchain
-import blockchain.image_block
+from blockchain.blockchain import Blockchain
+from blockchain.image_block import ImageBlockChain
 from pyweb.encrypt import EncryptImage
 
 
 user_database = user_db(r'database\user.db')
 
 app = Flask(__name__)
+
+blockchain = Blockchain()
+image_blockchain = ImageBlockChain(r'static\pictures', key=10)
 
 user_name = 'ShubhAgarwal'
 
@@ -39,6 +42,48 @@ def jk():
     name = str(request.args['uname']) or 'default'
     pas = str(request.args['pword']) or 'default'
     return f"It is now working {name} {pas}"
+
+
+@app.route('/mine_block', methods=['GET'])
+def mine_block():
+    ''' Mining a New Block
+    '''
+    previous_block = blockchain.get_previous_block()
+    proof = blockchain.proof_of_work(previous_block['proof'])
+    previous_hash = blockchain.hash(previous_block)
+    block = blockchain.create_block(proof, previous_hash)
+
+    responce = {
+        'message': 'Congratulations! You just mined the block',
+        'index': block['index'],
+        'timestamp': block['timestamp'],
+        'proof': proof}
+
+    return jsonify(responce), 200
+
+
+@app.route('/get_chain', methods=['GET'])
+def get_chain():
+    ''' To get the chain
+    '''
+    responce = {
+        'chain': blockchain.chain,
+        'length': len(blockchain.chain)
+    }
+    return jsonify(responce), 200
+
+
+@app.route('/is_valid', methods=['GET'])
+def is_valid():
+    '''To check the validity of the chain created
+    '''
+    if blockchain.is_chain_valid(blockchain.chain):
+        responce = {
+            'message': 'All Good, BlockChain is Valid.'}
+    else:
+        responce = {
+            'message': 'Opps!! BLockChain is not Valid'}
+    return jsonify(responce), 200
 
 
 if __name__ == '__main__':
