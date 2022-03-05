@@ -57,10 +57,10 @@ class user_db():
 
 if __name__ == "__main__":
     user_database = user_db()
-    name = 'AnuragGoel'
-    dob = 19092003
-    email_id = 'anuragoel@gmail.com'
-    img_block_index = 1
-    password = 12345678
+    name = 'VivianPias'
+    dob = 27082002
+    email_id = 'ajukil@gmail.com'
+    img_block_index = 7
+    password = 67356493
 
-    user_database.add_user('',)
+    user_database.add_user(name, dob, email_id, img_block_index, password)
