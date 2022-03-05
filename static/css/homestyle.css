@@ -74,3 +74,9 @@ video{
   transform: scale(200%) translateY(30px);
   border-radius: 0;
 }
+.head{
+  text-align: left;
+  padding-left: 3%;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
