@@ -1,0 +1,12 @@
+# Custom Dictionary Words
+adipisicing
+amet
+consectetur
+elit
+facilis
+itaque
+mktime
+Mollitia
+odit
+quisquam
+unde
