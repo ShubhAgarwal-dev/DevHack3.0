@@ -1,5 +1,14 @@
 {
     "editor.fontFamily": "MonoLisa, Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "bracket-pair-colorizer-2.colors": [
+        "Gold",
+        "Orchid",
+        "LightSkyBlue",
+        "SlateBlue",
+        "MediumSeaGreen",
+        "Orange"
+    ],
     "cSpell.customDictionaries": {
         "custom-dictionary-workspace": {
             "name": "custom-dictionary-workspace",
