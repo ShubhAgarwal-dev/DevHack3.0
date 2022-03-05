@@ -10,7 +10,7 @@ class Blockchain():
         self.chain = []
         self._genesis = self.create_block(proof=1, previous_hash='0')
 
-    def create_block(self, proof, previous_hash, data: None):
+    def create_block(self, proof, previous_hash, data=None):
         block = {
             'index': len(self.chain) + 1,
             'timestamp': mktime(datetime.utcnow().timetuple()),
