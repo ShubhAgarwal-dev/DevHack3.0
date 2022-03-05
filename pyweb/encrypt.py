@@ -15,7 +15,7 @@ class EncryptImage():
         return path[-1]
 
     def encrypt(self, destination: str = r'encrypted/'):
-        try:
+        # try:
             with open(self.image_path, mode='rb') as file:
                 img = bytearray(file)
                 for i, values in enumerate(img):
@@ -25,8 +25,8 @@ class EncryptImage():
                     destination = destination+self.image_name
                     file.write(destination)
 
-        except Exception:
-            print('error caught', Exception.__name__)
+        # except Exception:
+        #     print('error caught', Exception.__name__)
 
     @staticmethod
     def decrypt(image_path):

@@ -128,3 +128,54 @@ main{
     background-color: rgb(212, 231, 238);
 
 }
+.signupform .new-account{
+    width: 20rem;
+    font-size: 1.5rem;
+    bottom: 3%;
+}
+.signupform .btn3{
+    border: 0;
+    background-color: transparent;
+    font-size: 3rem;
+    transition-duration: 0.3s;
+    margin: -3px 0 0 7px;
+
+}
+.signupform .btn3:hover{
+    color: red;
+    transition-duration: 0.3s;
+}
+.signupform .new-acc{
+    text-align: center;
+    width: 100%;
+}
+.signupform .close{
+    margin: 0;
+}
+.signupform .close button{
+    width: 5rem;
+}
+
+.dsc{
+    background-color: blue;
+    border-color: transparent;
+    border-radius: 1.2rem;
+}
+
+  /* #################### styling signup ######################## */
+
+.signupform{
+    background-color: white;
+    height: 50%;
+    width: 30%;
+    border: 1px solid red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+
+}
+.signupform .close button{
+    width: 5rem;
+}
