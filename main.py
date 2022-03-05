@@ -8,6 +8,11 @@ def log_in():
     return render_template('index.html')
 
 
+@app.route('/test')
+def test():
+    return render_template('extra.html')
+
+
 @app.route('/home')
 def home():
     pass
