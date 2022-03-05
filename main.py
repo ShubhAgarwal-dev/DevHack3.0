@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pyweb.first import user_db
+import blockchain.blockchain
+import blockchain.image_block
+from pyweb.encrypt import EncryptImage
+
 
 user_database = user_db(r'database\user.db')
 
@@ -27,7 +31,7 @@ def home():
 
 @app.route('/profile')
 def profile():
-    return render_template('profilepage.html')
+    return render_template('profilepage.html', name=user_name)
 
 
 @app.route('/jk')
