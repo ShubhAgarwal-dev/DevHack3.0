@@ -5,6 +5,8 @@ const body = document.querySelector("body");
 const section = document.querySelector(".section")
 const footer = document.querySelector(".footer")
 
+popsignup.style.display = "none";
+
 console.log(btn2)
 console.log(popsignup)
 
