@@ -1,18 +1,24 @@
 # Custom Dictionary Words
 adipisicing
+Aman
 amet
+Chhimwal
 consectetur
 datee
 denc
+Desai
 elit
 emid
+encr
 facilis
 itaque
 mktime
 Mollitia
 odit
+Pias
 ppword
 pword
+pyweb
 quisquam
 signup
 signupform

@@ -48,6 +48,6 @@ class DecryptImage():
 
 if __name__ == '__main__':
     enc1 = EncryptImage('img1.jpg', 12)
-    enc2 = EncryptImage('wallpaper.jpg', 13)
+    enc2 = EncryptImage('img2.jpg', 13)
     denc1 = DecryptImage('img1.jpg', 12)
-    denc2 = DecryptImage('wallpaper.jpg', 13)
+    denc2 = DecryptImage('img2.jpg', 13)

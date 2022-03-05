@@ -32,7 +32,7 @@ class Blockchain():
         while not check_proof:
             operation = str(new_proof**3 - previous_proof**2)
             hash_operation = sha256(operation.encode()).hexdigest()
-            if hash_operation[:5] == '00000':
+            if hash_operation[:4] == '0000':
                 check_proof = True
             else:
                 new_proof += 1
@@ -53,7 +53,7 @@ class Blockchain():
             proof = block['proof']
             hash_operation = sha256(
                 str(proof**3 - previous_proof**2).encode()).hexdigest()
-            if hash_operation[:5] != '00000':
+            if hash_operation[:4] != '0000':
                 return False
             previous_block = block
             block_index += 1
