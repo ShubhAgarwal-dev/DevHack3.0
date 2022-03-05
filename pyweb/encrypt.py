@@ -3,7 +3,7 @@ import os
 
 class EncryptImage():
 
-    def __init__(self, image_path: str, key):
+    def __init__(self, image_path: str, key: str):
         self.image_path = image_path
         self.image_name = self.get_image_name(self.image_path)
         self.key = key
@@ -14,31 +14,40 @@ class EncryptImage():
         path = os.path.normpath(path).split(os.path.sep)
         return path[-1]
 
-    def encrypt(self, destination: str = r'encrypted/'):
-        # try:
-        with open(self.image_path, mode='rb') as file:
-            img = bytearray(file.read())
-            for i, values in enumerate(img):
-                img[i] = values ^ self.key
+    def encrypt(self):
+        try:
+            with open(self.image_path, mode='rb') as file:
+                img = bytearray(file.read())
+                for i, values in enumerate(img):
+                    img[i] = values ^ self.key
+                with open(self.image_path, mode='wb') as file2:
+                    file2.write(img)
 
-            destination = os.path.join(destination, self.image_name)
-            cwd = os.getcwd()
-            full_dest = os.path.join(cwd, destination)
+        except Exception:
+            print('error caught', Exception.__name__)
 
-            if not os.path.isfile(full_dest):
-                os.mkdir(full_dest)
 
-            with open(full_dest, mode='wb') as file:
-                file.write(img)
+class DecryptImage():
 
-        # except Exception:
-        #     print('error caught', Exception.__name__)
+    def __init__(self, image_path: str, key: str) -> None:
+        self.image_path = image_path
+        self.key = key
+        self.decrypt()
 
-    @staticmethod
-    def decrypt(image_path, key):
-        pass
+    def decrypt(self) -> None:
+        try:
+            with open(self.image_path, mode='rb') as file:
+                img = bytearray(file.read())
+                for i, val in enumerate(img):
+                    img[i] = val ^ self.key
+                with open(self.image_path, mode='wb') as file2:
+                    file2.write(img)
+        except Exception:
+            print('error caught', Exception.__name__)
 
 
 if __name__ == '__main__':
     enc1 = EncryptImage('img1.jpg', 12)
     enc2 = EncryptImage('wallpaper.jpg', 13)
+    denc1 = DecryptImage('img1.jpg', 12)
+    denc2 = DecryptImage('wallpaper.jpg', 13)
